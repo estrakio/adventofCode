@@ -1,16 +1,27 @@
-listeData = "move 3 from 8 to 4"
-t4 = ["R", "S", "C", "L"]
-t8 = ["C", "Z", "S", "P", "D", "L", "R"]
+achatMaison = 47262 # au 29/10/2020
+relever2021 = 49115 # relever de compteur le 1/11/2021
+estimer2021 = 47264
+diff = relever2021 - estimer2021
+telerelever = 1829
+totalConsoM3 = diff + telerelever
 
+print("\n \n \n \n consomation total en m3", totalConsoM3)
+coeffDeConversion = 11.15
+conversion = totalConsoM3 * coeffDeConversion
 
-command = listeData.split(" ")
-# command[1] = combien de caisse à bouger 
-# command[3] = depuis
-#  command[5] = vers
-for i in range(int(command[1])):
-    print(i)
-    locals()["t"+command[5]].append(locals()["t"+str(command[3])][-int(command[1]) + i])
-    del locals()["t"+command[3]][-int(command[1]) + i]
+print("\n consomation total en kwH", conversion)
 
-print("t4", t4 )
-print("t8", t8 )
+prixKwh = 0.05276
+
+prixHt = conversion * prixKwh
+print("\n Le prix Hors taxe revient a ", prixHt, "\n ")
+
+TVA = 20
+prixTVA = prixHt * TVA /100
+
+print("\n La TVA coute", prixTVA, "\n ")
+
+prixTtc = prixHt + prixTVA
+
+print("\n La facture devrait couter ", prixTtc, "\n ")
+
